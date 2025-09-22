@@ -709,10 +709,11 @@
             border: 2px solid var(--magenta);
         }
 
+
         .logos {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            /* top row = 3 logos */
+            /* top row */
             gap: 28px;
             align-items: center;
             justify-items: center;
@@ -721,31 +722,52 @@
 
         .logos img {
             max-height: 96px;
-            /* make them big */
             width: auto;
             opacity: .95;
             filter: saturate(.95) contrast(1.05);
         }
 
-        /* bottom row wrapper spans all columns */
+        /* bottom row spans full width and is centered */
         .logos-row {
             grid-column: 1 / -1;
-            /* span full width */
             display: flex;
             justify-content: center;
+            /* <-- centers as a pair */
+            align-items: center;
             gap: 60px;
-            /* space between SIT + TYC */
+            width: 100%;
+            margin-inline: auto;
+            /* safety */
         }
 
-        /* SIT is wider → let it scale a bit smaller */
+        /* balance the visual weight */
         .logos-row img[alt*="Singapore Institute of Technology"] {
             max-height: 80px;
         }
 
-        /* TYC can keep full height */
         .logos-row img[alt="TYC"] {
             max-height: 96px;
         }
+
+        @media (max-width:720px) {
+            .logos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .logos img {
+                max-height: 72px;
+            }
+
+            .logos-row {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .logos-row img {
+                max-height: 64px;
+            }
+        }
+
 
         @media (max-width:720px) {
             .logos {
@@ -1264,6 +1286,124 @@
         .modal-text li {
             margin-bottom: .4rem;
         }
+
+        /* Behind the Scenes — Auto-swiping carousel */
+        #about .bts {
+            margin-top: clamp(18px, 4vw, 36px);
+        }
+
+        #about .bts-title {
+            margin: 0 0 12px;
+            font-size: clamp(18px, 2.6vw, 22px);
+            color: #ffffff;
+        }
+
+        #about .bts-rail {
+            position: relative;
+        }
+
+        #about .bts-window {
+            overflow: hidden;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--border);
+            background: #fff;
+        }
+
+
+        /* show 2 slides side by side on wider screens */
+        @media (min-width: 720px) {
+            #about .bts-track {
+                grid-auto-columns: 50%;
+            }
+        }
+
+        /* 1-up only */
+        #about .bts-track {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 100%;
+            /* always full width */
+            gap: 0;
+            scroll-snap-type: x mandatory;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior-inline: contain;
+            scroll-behavior: smooth;
+        }
+
+        #about .bts-slide {
+            margin: 0;
+            height: min(72vh, 680px);
+            /* or your preferred height */
+            scroll-snap-align: start;
+            background: #fff;
+        }
+
+        #about .bts-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* optional: you can delete any .bts-slide figcaption rules if present */
+
+
+        #about .bts-slide figcaption {
+            background: #fff;
+            border-top: 2px solid var(--border);
+            padding: 10px 12px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        /* Controls */
+        #about .bts-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        #about .bts-nav {
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            border-radius: 30px;
+            border: 2px solid var(--brand);
+            background: #fff;
+            color: var(--brand);
+            box-shadow: var(--shadow);
+        }
+
+        #about .bts-dots {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #about .bts-dots button {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: 2px solid var(--brand);
+            background: #fff;
+        }
+
+        #about .bts-dots button[aria-current="true"] {
+            background: var(--brand);
+        }
+
+        /* Hover = pause hint (optional) */
+        @media (hover:hover) {
+            #about .bts-window:hover {
+                cursor: pointer;
+            }
+        }
     </style>
 </head>
 
@@ -1274,7 +1414,7 @@
     <header class="header" role="banner">
         <div class="nav wrap" aria-label="Primary">
             <a class="brand" href="#home" aria-label="People of PDD home">
-                <span class="logo" aria-hidden="true">P</span>
+                <!-- <span class="logo" aria-hidden="true">P</span> -->
                 <span class="titles">
                     <span class="site">Our Punggol Story</span>
                     <span class="mural">A PDD Mural</span>
@@ -1328,7 +1468,7 @@
                         totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
                         dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
                         fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                    <div class="stat" id="statLine" aria-live="polite">3500 people contributed • Updated today</div>
+                    <!-- <div class="stat" id="statLine" aria-live="polite">3500 people contributed • Updated today</div> -->
                 </div>
                 <div></div>
             </div>
@@ -1363,7 +1503,7 @@
             <div class="events-head">
                 <div>
                     <h2>What’s Happening</h2>
-                    <p class="lead">upcoming moments around the mural and our community</p>
+                    <p class="lead">Upcoming moments around the mural and our community!</p>
                 </div>
                 <div class="events-nav" aria-label="carousel controls">
                     <button class="nav-btn" id="evtPrev" aria-label="Previous event" title="Previous">←</button>
@@ -1375,47 +1515,46 @@
                 <div class="events-window" id="eventsWindow">
                     <div class="events-track" id="eventsTrack">
                         <!-- Slide 1 -->
-                        <article class="event-card" data-when="2025-11-16" aria-labelledby="evt-unveil-title">
-                            <div class="event-date" aria-hidden="true"><span class="mon">NOV</span><span
-                                    class="day">16</span><span class="year">2025</span></div>
+                        <article class="event-card" data-when="2025-11-16" aria-labelledby="evt-launch-title">
+                            <div class="event-date" aria-hidden="true">
+                                <span class="mon">NOV</span><span class="day">16</span><span class="year">2025</span>
+                            </div>
                             <div>
-                                <h3 id="evt-unveil-title" style="margin:0 0 6px">Mural Unveiling</h3>
-                                <p class="hint" style="margin:0 0 10px">Save the date — we’ll unveil <b>Our Punggol
-                                        Story</b> with artists, partners, and residents.</p>
-                                <div class="event-meta"><span class="badge">Punggol Digital District</span><span
-                                        class="badge">Public</span><span class="badge">Free</span></div>
+                                <h3 id="evt-launch-title" style="margin:0 0 6px">Mural Launch</h3>
+                                <p class="hint" style="margin:0 0 10px">
+                                    Celebrate with artists, partners, and residents as we launch <b>Our Punggol
+                                        Story</b>.
+                                </p>
+                                <div class="event-meta">
+                                    <span class="badge">Punggol Digital District</span>
+                                    <span class="badge">Public</span>
+                                    <span class="badge">Free</span>
+                                </div>
                                 <div class="mt-2"><a class="btn alt" href="#involved">Get updates</a></div>
                             </div>
                         </article>
 
                         <!-- Slide 2 -->
-                        <article class="event-card" data-when="2025-10-05" aria-labelledby="evt-sketchwalk-title">
-                            <div class="event-date" aria-hidden="true"><span class="mon">OCT</span><span
-                                    class="day">05</span><span class="year">2025</span></div>
-                            <div>
-                                <h3 id="evt-sketchwalk-title" style="margin:0 0 6px">Community Sketch Walk</h3>
-                                <p class="hint" style="margin:0 0 10px">Join artists and neighbors to spot motifs for
-                                    the mural.</p>
-                                <div class="event-meta"><span class="badge">Guided</span><span class="badge">Bring
-                                        sketchbook</span></div>
-                                <div class="mt-2"><a class="btn alt" href="#involved">Register interest</a></div>
+                        <article class="event-card" data-when="2025-12-01" aria-labelledby="evt-hidden-title">
+                            <div class="event-date" aria-hidden="true">
+                                <span class="mon">DEC</span><span class="day">01</span><span class="year">2025</span>
                             </div>
-                        </article>
-
-                        <!-- Slide 3 -->
-                        <article class="event-card" data-when="2025-10-20" aria-labelledby="evt-ardemo-title">
-                            <div class="event-date" aria-hidden="true"><span class="mon">OCT</span><span
-                                    class="day">20</span><span class="year">2025</span></div>
                             <div>
-                                <h3 id="evt-ardemo-title" style="margin:0 0 6px">AR Demo Day</h3>
-                                <p class="hint" style="margin:0 0 10px">Try the AR effect, learn tips, and preview
-                                    animations.</p>
-                                <div class="event-meta"><span class="badge">Hands-on</span><span class="badge">Devices
-                                        provided</span></div>
-                                <div class="mt-2"><a class="btn alt" href="#involved">RSVP</a></div>
+                                <h3 id="evt-hidden-title" style="margin:0 0 6px">HiddenSG WhatsApp Game</h3>
+                                <p class="hint" style="margin:0 0 10px">
+                                    Join our interactive WhatsApp treasure hunt — uncover mural secrets and hidden
+                                    stories across Punggol.
+                                </p>
+                                <div class="event-meta">
+                                    <span class="badge">Online</span>
+                                    <span class="badge">Interactive</span>
+                                    <span class="badge">Free</span>
+                                </div>
+                                <div class="mt-2"><a class="btn alt" href="#involved">Register to play</a></div>
                             </div>
                         </article>
                     </div>
+
                 </div>
                 <div class="events-dots" id="eventsDots" aria-hidden="true"></div>
             </div>
@@ -1437,24 +1576,28 @@
         <div class="wrap">
             <h2>Create Your Own PDD Avatar</h2>
             <p class="lead">Make a character that could appear in the mural, then bring the mural to life with AR.</p>
-            <div class="grid-2">
-                <div class="card"><!-- your avatar tool/embed goes here --></div>
-                <div class="card">
-                    <model-viewer id="mv" ar ar-modes="scene-viewer quick-look webxr" camera-controls disable-zoom
-                        autoplay src="" ios-src="" alt="AR preview placeholder"></model-viewer>
+            <div class="card">
+                <video src="assets/avatar-demo-vod.mp4" autoplay muted loop playsinline preload="metadata"
+                    style="width:100%; border-radius:30px; display:block; object-fit:cover;">
+                </video>
+            </div>
+
+
+            <div class="center mt-3">
+                <div class="center mt-3">
+                    <a href="https://peopleofpdd.sg/char.html" target="_blank" rel="noopener" class="btn alt">
+                        Make Your Own Avatar
+                        <span aria-hidden="true" style="margin-left:6px;">🔗</span>
+                    </a>
+
+                    <a href="https://example.com/" target="_blank" rel="noopener" class="btn alt"
+                        style="margin-left:12px;">
+                        See Your Avatar at the Mural!
+                        <span aria-hidden="true" style="margin-left:6px;">🔗</span>
+                    </a>
                 </div>
+
             </div>
-            <div id="troubleshoot" class="mt-4">
-                <details>
-                    <summary><b>Troubleshooting</b></summary>
-                    <ul class="mt-2">
-                        <li>Nothing shows up? Try moving a little closer/further and ensure good lighting.</li>
-                        <li>Older device? Use <i>scene-viewer</i> (Android) or <i>Quick Look</i> (iOS).</li>
-                        <li>Still stuck? Use Demo Mode to preview animations without the mural.</li>
-                    </ul>
-                </details>
-            </div>
-        </div>
     </section>
 
     <!-- ==============================
@@ -1539,13 +1682,55 @@
                     </div>
                 </div>
 
-
-
                 <p class="mt-2"><a href="https://www.jtc.gov.sg/" target="_blank" rel="noopener">Read about PDD as a
                         vibrant, well-connected, sustainable hub →</a></p>
             </div>
+
+            <section class="bts" aria-label="Behind the Scenes">
+                <h3 class="bts-title">Behind the Scenes</h3>
+
+                <div class="bts-rail">
+                    <div class="bts-window" id="btsWindow">
+                        <div class="bts-track" id="btsTrack">
+                            <!-- SLIDE 1 -->
+                            <figure class="bts-slide">
+                                <img src="assets/bts/1.jpeg" alt="Sketching early mural motifs" loading="lazy" />
+                                <!-- <figcaption>Sketching early motifs</figcaption> -->
+                            </figure>
+                            <!-- SLIDE 2 -->
+                            <figure class="bts-slide">
+                                <img src="assets/bts/2.jpeg" alt="Community workshop table with markers and prints"
+                                    loading="lazy" />
+                                <!-- <figcaption>Community workshop</figcaption> -->
+                            </figure>
+                            <!-- SLIDE 3 -->
+                            <figure class="bts-slide">
+                                <img src="assets/bts/3.jpeg" alt="Vector layout on screen showing pattern blocks"
+                                    loading="lazy" />
+                                <!-- <figcaption>Vector layout pass</figcaption> -->
+                            </figure>
+                            <!-- SLIDE 4 -->
+                            <figure class="bts-slide">
+                                <img src="assets/bts/4.jpeg" alt="Students testing AR overlay at PDD" loading="lazy" />
+                                <!-- <figcaption>AR testing at PDD</figcaption> -->
+                            </figure>
+
+                        </div>
+                    </div>
+
+                    <div class="bts-controls" aria-label="Gallery controls">
+                        <button class="bts-nav" id="btsPrev" aria-label="Previous slide">←</button>
+                        <div class="bts-dots" id="btsDots" aria-hidden="true"></div>
+                        <button class="bts-nav" id="btsNext" aria-label="Next slide">→</button>
+                    </div>
+                </div>
+            </section>
+
         </div>
     </section>
+
+
+
 
     <!-- ==============================
        VISIT (green) — WAVE AT TOP (green)
@@ -1977,6 +2162,84 @@
             });
         })();
     </script>
+    <script>
+        (function initBTS() {
+            const win = document.getElementById('btsWindow');
+            const track = document.getElementById('btsTrack');
+            const prev = document.getElementById('btsPrev');
+            const next = document.getElementById('btsNext');
+            const dotsEl = document.getElementById('btsDots');
+            if (!win || !track) return;
+
+            const slides = Array.from(track.children);
+            let index = 0, timer = null, paused = false;
+            const interval = 3500, count = slides.length;
+
+            function vw() { return win.getBoundingClientRect().width; }
+
+            function buildDots() {
+                dotsEl.innerHTML = '';
+                for (let i = 0; i < count; i++) {
+                    const b = document.createElement('button');
+                    b.type = 'button';
+                    b.setAttribute('aria-label', `go to slide ${i + 1}`);
+                    b.addEventListener('click', () => goTo(i));
+                    dotsEl.appendChild(b);
+                }
+                updateDots();
+            }
+
+            function updateDots() {
+                Array.from(dotsEl.children).forEach((d, i) => d.setAttribute('aria-current', String(i === index)));
+            }
+
+            function goTo(i, smooth = true) {
+                index = Math.max(0, Math.min(count - 1, i));
+                track.scrollTo({ left: index * vw(), behavior: smooth ? 'smooth' : 'auto' });
+                updateDots();
+                if (prev) prev.disabled = (index === 0);
+                if (next) next.disabled = (index === count - 1);
+            }
+
+            prev?.addEventListener('click', () => goTo(index - 1));
+            next?.addEventListener('click', () => goTo(index + 1));
+            window.addEventListener('resize', () => goTo(index, false));
+
+            // keyboard when focused within window
+            win.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') { e.preventDefault(); goTo(index + 1); }
+                if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(index - 1); }
+            });
+
+            // drag / swipe
+            let down = false, startX = 0, startScroll = 0;
+            win.addEventListener('pointerdown', (e) => { down = true; startX = e.clientX; startScroll = track.scrollLeft; paused = true; win.setPointerCapture(e.pointerId); });
+            win.addEventListener('pointermove', (e) => { if (!down) return; track.scrollLeft = startScroll - (e.clientX - startX); });
+            function snap() { goTo(Math.round(track.scrollLeft / vw())); }
+            win.addEventListener('pointerup', () => { if (!down) return; down = false; paused = false; snap(); });
+            win.addEventListener('pointercancel', () => { down = false; paused = false; snap(); });
+
+            // auto-advance (pause on hover/focus)
+            function start() { stop(); timer = setInterval(() => { if (!paused) goTo((index + 1) % count); }, interval); }
+            function stop() { if (timer) { clearInterval(timer); timer = null; } }
+            win.addEventListener('mouseenter', () => paused = true);
+            win.addEventListener('mouseleave', () => paused = false);
+            win.addEventListener('focusin', () => paused = true);
+            win.addEventListener('focusout', () => paused = false);
+
+            // start/stop when visible
+            const io = new IntersectionObserver((ents) => {
+                for (const ent of ents) { ent.isIntersecting ? start() : stop(); }
+            }, { threshold: .2 });
+            io.observe(win);
+
+            // init
+            buildDots();
+            goTo(0, false);
+        })();
+    </script>
+
+
 
 </body>
 
