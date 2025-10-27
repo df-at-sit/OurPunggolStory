@@ -424,7 +424,8 @@
         }
 
         .sub {
-            font-size: clamp(15px, 2.5vw, 18px);
+            font-size: clamp(18px, 2.8vw, 20px);
+
         }
 
         .hero-cta {
@@ -1404,6 +1405,56 @@
                 cursor: pointer;
             }
         }
+
+        /* --- Updated logo layout --- */
+
+        /* Ensure logos are evenly spaced and centered */
+        .logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 28px;
+            margin-top: 20px;
+        }
+
+        /* SIT logo centered and balanced */
+        .logos img[alt*="Singapore Institute of Technology"] {
+            max-height: 80px;
+            display: block;
+            margin-inline: auto;
+            /* centers horizontally */
+        }
+
+        /* TYC stays centered under “Supported by” */
+        .logos-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 720px) {
+            .logos {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .logos img {
+                max-height: 72px;
+            }
+
+            .logos-row {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .logos-row img {
+                max-height: 64px;
+            }
+        }
     </style>
 </head>
 
@@ -1424,14 +1475,13 @@
                 <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="menu">☰</button>
                 <div class="menu" id="menu">
                     <a href="#home">Home</a>
-                    <a href="#events" class="menu-whats">What’s Happening</a>
-
-                    <a href="#create-ar">Create Avatar</a>
-                    <a href="#artists">Artists</a>
                     <a href="#about">About</a>
-                    <a href="#visit">Visit</a>
+                    <a href="#create-ar">Create Your Avatar</a>
+                    <a href="#artists">About The Artists</a>
+                    <a href="#visit">Locate Us</a>
                     <a href="#involved">Get Involved</a>
                 </div>
+
 
             </nav>
         </div>
@@ -1460,28 +1510,57 @@
             <div class="hero-grid">
                 <div>
                     <h1>Our Punggol Story</h1>
-                    <p class="sub">A living mural made with our community.</p>
-                    <p class="sub">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia eius laudantium
-                        recusandae eum rem eos earum hic labore iste ipsa. Nihil quam, perferendis atque sequi veniam
-                        doloribus voluptate reprehenderit labore.</p>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                        totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-                        dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                        fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                    <!-- <div class="stat" id="statLine" aria-live="polite">3500 people contributed • Updated today</div> -->
+                    <p class="sub">
+                        Shaping Hearts is Singapore’s largest inclusive arts festival by the North East Community
+                        Development Council,
+                        providing persons with disabilities a platform to showcase their talents and pursue their
+                        artistic passions.
+                        As an extension of the festival, the Shaping Hearts Placemaking Series transforms everyday
+                        spaces into inclusive
+                        art canvases, amplifying the voices of artists with disabilities, promoting accessibility, and
+                        deepening
+                        community understanding.
+                    </p>
+
+                    <p>
+                        As part of this series, we are proud to present <b>Our Punggol Story</b> mural at Punggol
+                        Digital District.
+                        Commissioned in partnership with <b>JTC</b>, the mural reflects JTC’s commitment to advancing
+                        inclusive
+                        placemaking and community engagement alongside <b>NECDC</b>. Co-created with Shaping Hearts
+                        special needs artists
+                        <b>Simeon Tan</b> and <b>Ezra Chan Yi</b>, the mural was executed by <b>TYC Studios</b> and
+                        brought to life with
+                        contributions from key stakeholders of Punggol Digital District and the wider community
+                        including the
+                        <b>Singapore Institute of Technology</b> and <b>Punggol residents</b>. It traces Punggol’s
+                        journey from a
+                        riverside village, through kampungs, to Singapore’s first man-made waterway, reflecting the
+                        enduring spirit of
+                        community and nature.
+                    </p>
+
+                    <p>
+                        Marking <b>SG60</b>, the mural also celebrates our nation’s growth and resilience, mirrored in
+                        Punggol’s own
+                        evolution. Today, Punggol Digital District ushers in a new era of innovation while remaining
+                        rooted in the
+                        values of community.
+                    </p>
                 </div>
                 <div></div>
             </div>
 
+
             <!-- full-width stats -->
             <div class="stats-grid" id="statsGrid" aria-label="project statistics">
-                <div class="stat-card"><span class="num" data-counter data-target="3500" data-suffix="+">0</span><span
+                <div class="stat-card"><span class="num" data-counter data-target="500" data-suffix="+">0</span><span
                         class="label">Contributors</span></div>
-                <div class="stat-card"><span class="num" data-counter data-target="1000" data-suffix="+">0</span><span
+                <div class="stat-card"><span class="num" data-counter data-target="450" data-suffix="+">0</span><span
                         class="label">Avatars created</span></div>
                 <div class="stat-card"><span class="num" data-counter data-target="9">0</span><span
                         class="label">Partners</span></div>
-                <div class="stat-card"><span class="num" data-counter data-target="130" data-suffix=" m">0</span><span
+                <div class="stat-card"><span class="num" data-counter data-target="132" data-suffix=" m">0</span><span
                         class="label">Length of mural</span></div>
             </div>
         </div>
@@ -1520,7 +1599,7 @@
                                 <span class="mon">NOV</span><span class="day">16</span><span class="year">2025</span>
                             </div>
                             <div>
-                                <h3 id="evt-launch-title" style="margin:0 0 6px">Mural Launch</h3>
+                                <h3 id="evt-launch-title" style="margin:0 0 6px">Launch of Our Punggol Story Mural</h3>
                                 <p class="hint" style="margin:0 0 10px">
                                     Celebrate with artists, partners, and residents as we launch <b>Our Punggol
                                         Story</b>.
@@ -1574,8 +1653,9 @@
         </div>
 
         <div class="wrap">
-            <h2>Create Your Own PDD Avatar</h2>
-            <p class="lead">Make a character that could appear in the mural, then bring the mural to life with AR.</p>
+            <h2>People of PDD</h2>
+            <p class="lead">Create your own PDD avatar
+                and bring it to life at the mural with AR!</p>
             <div class="card">
                 <video src="assets/avatar-demo-vod.mp4" autoplay muted loop playsinline preload="metadata"
                     style="width:100%; border-radius:30px; display:block; object-fit:cover;">
@@ -1622,8 +1702,14 @@
                         <div>
                             <h3 style="margin:0"><a href="https://shapinghearts.cdc.gov.sg/simeon-tan-rui-en/"
                                     target="_blank" rel="noopener">Simeon Tan Rui En</a></h3>
-                            <p class="mt-1">Simeon Tan Rui En, a talented artist with Autism Spectrum Disorder (ASD),
-                                celebrated for his vibrant, imaginative creations that span multiple mediums.</p>
+                            <p class="mt-1">Meet Simeon Tan Rui En, a talented artist with Autism Spectrum Disorder
+                                (ASD), celebrated for his vibrant, imaginative creations that span multiple mediums.
+                                Clay, in particular, provides him with a sense of calm and balance. In 2024, Simeon
+                                became the proud recipient of the North East CDC Shining Hearts Award, Neo Kah Kiat Arts
+                                Award and Liberty Arts Award. A NAFA CLE Visual Arts (2021) graduate with distinction,
+                                he has exhibited at Pathlight, ART:DIS and Shaping Hearts 2024. Simeon also left his
+                                mark on the Shaping Hearts Placemaking Mural Project in Punggol Digital District. Step
+                                into his colourful world of creativity and inspiration!</p>
                             <a class="btn-artist" href="https://shapinghearts.cdc.gov.sg/simeon-tan-rui-en/"
                                 target="_blank" rel="noopener">Learn More</a>
                         </div>
@@ -1636,9 +1722,16 @@
                         <div>
                             <h3 style="margin:0"><a href="https://shapinghearts.cdc.gov.sg/ezra-chan-yi/"
                                     target="_blank" rel="noopener">Ezra Chan Yi</a></h3>
-                            <p class="mt-1">Ezra Chan Yi is an interdisciplinary artist working across digital
-                                illustration, animation, drawing, painting, and sculpture. Rooted in memory and social
-                                reflection.</p>
+                            <p class="mt-1">Ezra Chan Yi is an interdisciplinary artist diagnosed with Autism Spectrum
+                                Disorder (ASD) working across digital illustration, animation, drawing, painting, and
+                                sculpture. Rooted in memory, narrative, and social reflection, his vivid works are
+                                emotionally resonant and conceptually layered. He holds Distinctions in NAFA’s CLE
+                                Certificates in Visual Arts and Fine Art. At 15, he was named Most Promising Artist at
+                                UOB’s Painting of the Year. His accolades include the Lee Kuan Yew Exemplary Student
+                                Award (2021), Shining Hearts Award (2024), Neo Kah Kiat Painting of the Year (2024), and
+                                the Painters Online Webinar Award (2025). His work has been exhibited at the TALP Open
+                                (2024, Nottingham, UK), ArtPrize (2024, 2025, Grand Rapids, Michigan, USA), and the XXIV
+                                Exposición Internacional Museo Virtual MundoArti Nuevo Año 2025 (Valencia, Spain).</p>
                             <a class="btn-artist" href="https://shapinghearts.cdc.gov.sg/ezra-chan-yi/" target="_blank"
                                 rel="noopener">Learn More</a>
                         </div>
@@ -1663,7 +1756,7 @@
         </div>
 
         <div class="wrap">
-            <div class="about-card">
+            <!-- <div class="about-card">
                 <h2>About the Project</h2>
                 <p><b>Our Punggol Story</b> is a collaboration between JTC, NECDC, SIT, and Shaping Hearts under the
                     People of PDD initiative. Our goals: <b>inclusive co-creation</b>, <b>digital + physical layers</b>,
@@ -1684,7 +1777,26 @@
 
                 <p class="mt-2"><a href="https://www.jtc.gov.sg/" target="_blank" rel="noopener">Read about PDD as a
                         vibrant, well-connected, sustainable hub →</a></p>
+            </div> -->
+
+            <div class="about-card">
+                <h2>About the Project</h2>
+
+                <p><b>Brought to you by:</b></p>
+                <div class="logos" aria-label="Stakeholder logos">
+                    <img src="./assets/logos/jtc.png" alt="JTC" loading="lazy" />
+                    <img src="./assets/logos/necdc.png" alt="North East CDC" loading="lazy" />
+                    <img src="./assets/logos/shapinghearts.png" alt="Shaping Hearts" loading="lazy" />
+                    <img src="./assets/logos/sitdflogo.png" alt="Singapore Institute of Technology – Design Factory"
+                        loading="lazy" />
+                </div>
+
+                <p class="mt-3"><b>Supported by:</b></p>
+                <div class="logos-row">
+                    <img src="./assets/logos/tyc.png" alt="TYC" loading="lazy" />
+                </div>
             </div>
+
 
             <section class="bts" aria-label="Behind the Scenes">
                 <h3 class="bts-title">Behind the Scenes</h3>
@@ -1780,7 +1892,7 @@
             </svg>
         </div>
 
-        <div class="wrap">
+        <!-- <div class="wrap">
             <h2>Partnerships and Collaboration</h2>
             <p class="lead">Join workshops, contribute future avatars, volunteer, or partner with us.</p>
             <div class="grid-1">
@@ -1821,7 +1933,16 @@
                     </div>
                 </div>
             </div>
+        </div> -->
+
+        <div class="wrap">
+            <h2>Partnerships and Collaboration</h2>
+            <p class="lead">
+                For partnership or collaboration opportunities, please write to
+                <a href="mailto:northeast_cdc@pa.gov.sg">northeast_cdc@pa.gov.sg</a>.
+            </p>
         </div>
+
     </section>
 
     <!-- Consent Lightbox -->
