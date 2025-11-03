@@ -258,7 +258,7 @@
         .titles .mural {
             font-weight: 600;
             font-size: .9rem;
-            color: #667085;
+            color: #5D8EBA;
         }
 
         .menu {
@@ -1529,6 +1529,12 @@
                 height: 56px;
             }
         }
+
+        @media (max-width: 640px) {
+            :root {
+                --pad: clamp(20px, 6vw, 28px);
+            }
+        }
     </style>
 </head>
 
@@ -2089,7 +2095,15 @@
             </div>
 
             <div>
-                <b>Partners</b>
+                <b>Collaborate with Shaping Hearts!</b>
+                <p class="mt-1">
+                    For partnership or collaboration opportunities, please write to
+                    <a href="mailto:northeast_cdc@pa.gov.sg">northeast_cdc@pa.gov.sg</a>.
+                </p>
+            </div>
+
+            <div>
+                <b>Brought To You By</b>
                 <ul class="footer-links">
                     <li>
                         <a href="https://www.jtc.gov.sg/" target="_blank" rel="noopener">
@@ -2119,15 +2133,9 @@
                 </ul>
             </div>
 
-            <div>
-                <b>Partnerships & Collaboration</b>
-                <p class="mt-1">
-                    For partnership or collaboration opportunities, please write to
-                    <a href="mailto:northeast_cdc@pa.gov.sg">northeast_cdc@pa.gov.sg</a>.
-                </p>
-            </div>
 
-            <div>
+
+            <div style="display: none;">
                 <b>Share</b>
                 <p class="mt-1">Share this mural</p>
                 <div class="mt-1"><a class="btn ghost" id="shareBtn" href="#">Share link</a></div>
