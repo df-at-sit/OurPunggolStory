@@ -1092,6 +1092,14 @@
             min-height: 180px;
         }
 
+        .event-card .event-banner {
+            grid-column: 1 / -1;
+            width: 100%;
+            border-radius: calc(var(--radius) - 12px);
+            border: 2px solid var(--border);
+            object-fit: cover;
+        }
+
         .event-date {
             display: grid;
             place-items: center;
@@ -1455,6 +1463,72 @@
                 max-height: 64px;
             }
         }
+
+        .brand .titles {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+            max-width: clamp(150px, 28vw, 200px);
+            font-size: 1.2rem;
+            /* keep the header copy tighter */
+        }
+
+        /* make the map full width in the visit section */
+        #visit .grid-2 {
+            grid-template-columns: 1fr;
+        }
+
+        #visit .map {
+            width: 100%;
+            height: 480px;
+            /* optional: taller map */
+        }
+
+        /* responsive footer grid */
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: var(--gap);
+        }
+
+
+
+        /* footer logos bigger + aligned nicely */
+        .footer-links li a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 10px 16px;
+        }
+
+        .footer-links li a img {
+            height: 48px;
+            width: auto;
+            display: block;
+            filter: saturate(1) contrast(1.05);
+            transition: transform 0.2s ease;
+        }
+
+        .footer-links li a:hover img {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 640px) {
+            .footer-links li a img {
+                height: 36px;
+            }
+        }
+
+        /* Bigger footer logos */
+        .footer-links li a img {
+            height: 84px;
+        }
+
+        @media (max-width: 640px) {
+            .footer-links li a img {
+                height: 56px;
+            }
+        }
     </style>
 </head>
 
@@ -1468,17 +1542,19 @@
                 <!-- <span class="logo" aria-hidden="true">P</span> -->
                 <span class="titles">
                     <span class="site">Our Punggol Story</span>
-                    <span class="mural">A PDD Mural</span>
+                    <span class="mural" style="font-size: 0.8rem;">Singapore's Longest Wall Mural at Punggol Digital
+                        District</span>
                 </span>
             </a>
             <nav>
                 <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="menu">☰</button>
                 <div class="menu" id="menu">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
+                    <a href="#home">About</a>
+                    <a href="#artists">The Artists</a>
+
                     <a href="#create-ar">Create Your Avatar</a>
-                    <a href="#artists">About The Artists</a>
-                    <a href="#visit">Locate Us</a>
+                    <a href="#about">What's Happening</a>
+                    <a href="#visit">Visit Us</a>
                     <a href="#involved">Get Involved</a>
                 </div>
 
@@ -1565,12 +1641,11 @@
             </div>
         </div>
     </main>
-
     <!-- ==============================
-       WHAT'S HAPPENING (white) — WAVE AT TOP (white)
+       ARTISTS (orange) — WAVE AT TOP (orange)
   =============================== -->
-    <section class="section events" id="events" role="region" aria-label="What’s Happening carousel">
-        <div class="wave wave--white" aria-hidden="true">
+    <section class="section theme-orange" id="artists">
+        <div class="wave wave--orange" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
                 <path
                     d="M0,192L48,181.3C96,171,192,149,288,160C384,171,480,213,576,213.3C672,213,768,171,864,176C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L0,320Z">
@@ -1579,66 +1654,73 @@
         </div>
 
         <div class="wrap">
-            <div class="events-head">
-                <div>
-                    <h2>What’s Happening</h2>
-                    <p class="lead">Upcoming moments around the mural and our community!</p>
+            <h2 class="section-title">Featured Shaping Hearts Artists</h2>
+            <div class="grid-2 mt-2">
+                <div class="card">
+                    <div class="body artist">
+                        <img class="avatar" alt="Portrait of Simeon Tan Rui En" loading="lazy"
+                            src="assets/simeon.png" />
+                        <div>
+                            <h3 style="margin:0"><a href="https://shapinghearts.cdc.gov.sg/simeon-tan-rui-en/"
+                                    target="_blank" rel="noopener">Simeon Tan Rui En</a></h3>
+                            <p class="mt-1">Simeon Tan Rui En is a multidisciplinary artist with Autism Spectrum
+                                Disorder (ASD), known for his vibrant, imaginative works across mediums. Clay offers him
+                                calm and balance, while his playful visual style brings joy to community art. A NAFA
+                                Visual Arts graduate with distinction, Simeon has exhibited with Pathlight, ART:DIS, and
+                                Shaping Hearts, and contributed his signature whimsical forms to the Punggol Digital
+                                District Placemaking Mural, celebrating nature and technology in harmony.</p>
+                            <a class="btn-artist" href="https://shapinghearts.cdc.gov.sg/simeon-tan-rui-en/"
+                                target="_blank" rel="noopener">Learn More</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="events-nav" aria-label="carousel controls">
-                    <button class="nav-btn" id="evtPrev" aria-label="Previous event" title="Previous">←</button>
-                    <button class="nav-btn" id="evtNext" aria-label="Next event" title="Next">→</button>
+
+                <div class="card">
+                    <div class="body artist">
+                        <img class="avatar" alt="Portrait of Ezra Chan Yi" loading="lazy" src="assets/ezra.png" />
+                        <div>
+                            <h3 style="margin:0"><a href="https://shapinghearts.cdc.gov.sg/ezra-chan-yi/"
+                                    target="_blank" rel="noopener">Ezra Chan Yi</a></h3>
+                            <p class="mt-1">Ezra Chan Yi, an interdisciplinary artist with ASD, works across
+                                illustration, animation, and painting to explore memory and emotion. His distinctive use
+                                of color and narrative depth gives voice to personal and collective stories. A
+                                multi-award-winning NAFA graduate and international exhibitor, Ezra’s expressive motifs
+                                and layered imagery enriched the Punggol Digital District Mural, adding emotional
+                                resonance and visual dynamism to the collaborative artwork.</p>
+                            <a class="btn-artist" href="https://shapinghearts.cdc.gov.sg/ezra-chan-yi/" target="_blank"
+                                rel="noopener">Learn More</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="events-rail">
-                <div class="events-window" id="eventsWindow">
-                    <div class="events-track" id="eventsTrack">
-                        <!-- Slide 1 -->
-                        <article class="event-card" data-when="2025-11-16" aria-labelledby="evt-launch-title">
-                            <div class="event-date" aria-hidden="true">
-                                <span class="mon">NOV</span><span class="day">16</span><span class="year">2025</span>
-                            </div>
-                            <div>
-                                <h3 id="evt-launch-title" style="margin:0 0 6px">Launch of Our Punggol Story Mural</h3>
-                                <p class="hint" style="margin:0 0 10px">
-                                    Celebrate with artists, partners, and residents as we launch <b>Our Punggol
-                                        Story</b>.
-                                </p>
-                                <div class="event-meta">
-                                    <span class="badge">Punggol Digital District</span>
-                                    <span class="badge">Public</span>
-                                    <span class="badge">Free</span>
-                                </div>
-                                <div class="mt-2"><a class="btn alt" href="#involved">Get updates</a></div>
-                            </div>
-                        </article>
-
-                        <!-- Slide 2 -->
-                        <article class="event-card" data-when="2025-12-01" aria-labelledby="evt-hidden-title">
-                            <div class="event-date" aria-hidden="true">
-                                <span class="mon">DEC</span><span class="day">01</span><span class="year">2025</span>
-                            </div>
-                            <div>
-                                <h3 id="evt-hidden-title" style="margin:0 0 6px">HiddenSG WhatsApp Game</h3>
-                                <p class="hint" style="margin:0 0 10px">
-                                    Join our interactive WhatsApp treasure hunt — uncover mural secrets and hidden
-                                    stories across Punggol.
-                                </p>
-                                <div class="event-meta">
-                                    <span class="badge">Online</span>
-                                    <span class="badge">Interactive</span>
-                                    <span class="badge">Free</span>
-                                </div>
-                                <div class="mt-2"><a class="btn alt" href="#involved">Register to play</a></div>
-                            </div>
-                        </article>
+            <br>
+            <!-- <div class="center mt-3"><a class="btn alt" href="https://shapinghearts.sg" target="_blank"
+                    rel="noopener">Learn more on Shaping Hearts</a></div> -->
+            <div class="card mt-2">
+                <div class="body artist">
+                    <img class="avatar" alt="Portrait of Tell Your Children collective" loading="lazy"
+                        src="assets/tyc-image.png" />
+                    <div>
+                        <h3 style="margin:0"><a href="https://tellyourchildren.com.sg" target="_blank" rel="noopener">
+                                Tell Your Children
+                            </a></h3>
+                        <p class="mt-1">
+                            Tell Your Children (TYC) is a Singapore-based creative collective known for punchy
+                            illustrations and bold murals across the island. Their graphic storytelling blends
+                            pop culture, local heritage, and contemporary design, bringing youthful energy to
+                            the Punggol Digital District mural while championing community-driven art.
+                        </p>
+                        <a class="btn-artist" href="https://tellyourchildren.world/" target="_blank" rel="noopener">
+                            Learn More
+                        </a>
                     </div>
-
                 </div>
-                <div class="events-dots" id="eventsDots" aria-hidden="true"></div>
             </div>
         </div>
     </section>
+
+
+
 
     <!-- ==============================
        CREATE AVATAR + AR (accent) — WAVE AT TOP (accent)
@@ -1680,11 +1762,12 @@
             </div>
     </section>
 
+
     <!-- ==============================
-       ARTISTS (orange) — WAVE AT TOP (orange)
+       WHAT'S HAPPENING (white) — WAVE AT TOP (white)
   =============================== -->
-    <section class="section theme-orange" id="artists">
-        <div class="wave wave--orange" aria-hidden="true">
+    <section class="section events" id="events" role="region" aria-label="What’s Happening carousel">
+        <div class="wave wave--white" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
                 <path
                     d="M0,192L48,181.3C96,171,192,149,288,160C384,171,480,213,576,213.3C672,213,768,171,864,176C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L0,320Z">
@@ -1693,55 +1776,70 @@
         </div>
 
         <div class="wrap">
-            <h2 class="section-title">Featured Shaping Hearts Artists</h2>
-            <div class="grid-2 mt-2">
-                <div class="card">
-                    <div class="body artist">
-                        <img class="avatar" alt="Portrait of Simeon Tan Rui En" loading="lazy"
-                            src="assets/simeon.png" />
-                        <div>
-                            <h3 style="margin:0"><a href="https://shapinghearts.cdc.gov.sg/simeon-tan-rui-en/"
-                                    target="_blank" rel="noopener">Simeon Tan Rui En</a></h3>
-                            <p class="mt-1">Meet Simeon Tan Rui En, a talented artist with Autism Spectrum Disorder
-                                (ASD), celebrated for his vibrant, imaginative creations that span multiple mediums.
-                                Clay, in particular, provides him with a sense of calm and balance. In 2024, Simeon
-                                became the proud recipient of the North East CDC Shining Hearts Award, Neo Kah Kiat Arts
-                                Award and Liberty Arts Award. A NAFA CLE Visual Arts (2021) graduate with distinction,
-                                he has exhibited at Pathlight, ART:DIS and Shaping Hearts 2024. Simeon also left his
-                                mark on the Shaping Hearts Placemaking Mural Project in Punggol Digital District. Step
-                                into his colourful world of creativity and inspiration!</p>
-                            <a class="btn-artist" href="https://shapinghearts.cdc.gov.sg/simeon-tan-rui-en/"
-                                target="_blank" rel="noopener">Learn More</a>
-                        </div>
-                    </div>
+            <div class="events-head">
+                <div>
+                    <h2>What’s Happening</h2>
+                    <p class="lead">Upcoming moments around the mural and our community!</p>
                 </div>
-
-                <div class="card">
-                    <div class="body artist">
-                        <img class="avatar" alt="Portrait of Ezra Chan Yi" loading="lazy" src="assets/ezra.png" />
-                        <div>
-                            <h3 style="margin:0"><a href="https://shapinghearts.cdc.gov.sg/ezra-chan-yi/"
-                                    target="_blank" rel="noopener">Ezra Chan Yi</a></h3>
-                            <p class="mt-1">Ezra Chan Yi is an interdisciplinary artist diagnosed with Autism Spectrum
-                                Disorder (ASD) working across digital illustration, animation, drawing, painting, and
-                                sculpture. Rooted in memory, narrative, and social reflection, his vivid works are
-                                emotionally resonant and conceptually layered. He holds Distinctions in NAFA’s CLE
-                                Certificates in Visual Arts and Fine Art. At 15, he was named Most Promising Artist at
-                                UOB’s Painting of the Year. His accolades include the Lee Kuan Yew Exemplary Student
-                                Award (2021), Shining Hearts Award (2024), Neo Kah Kiat Painting of the Year (2024), and
-                                the Painters Online Webinar Award (2025). His work has been exhibited at the TALP Open
-                                (2024, Nottingham, UK), ArtPrize (2024, 2025, Grand Rapids, Michigan, USA), and the XXIV
-                                Exposición Internacional Museo Virtual MundoArti Nuevo Año 2025 (Valencia, Spain).</p>
-                            <a class="btn-artist" href="https://shapinghearts.cdc.gov.sg/ezra-chan-yi/" target="_blank"
-                                rel="noopener">Learn More</a>
-                        </div>
-                    </div>
+                <div class="events-nav" aria-label="carousel controls">
+                    <button class="nav-btn" id="evtPrev" aria-label="Previous event" title="Previous">←</button>
+                    <button class="nav-btn" id="evtNext" aria-label="Next event" title="Next">→</button>
                 </div>
             </div>
-            <div class="center mt-3"><a class="btn alt" href="https://shapinghearts.sg" target="_blank"
-                    rel="noopener">Learn more on Shaping Hearts</a></div>
+
+            <div class="events-rail">
+                <div class="events-window" id="eventsWindow">
+                    <div class="events-track" id="eventsTrack">
+                        <!-- Slide 1 -->
+                        <article class="event-card" data-when="2025-11-16" aria-labelledby="evt-launch-title">
+                            <img class="event-banner" src="assets/launchbanner.png"
+                                alt="Crowd celebrating the launch of Our Punggol Story mural" loading="lazy" />
+                            <div class="event-date" aria-hidden="true">
+                                <span class="mon">NOV</span><span class="day">16</span><span class="year">2025</span>
+                            </div>
+
+                            <div>
+                                <h3 id="evt-launch-title" style="margin:0 0 6px">Launch of Our Punggol Story Mural</h3>
+                                <p class="hint" style="margin:0 0 10px">
+                                    Celebrate with artists, partners, and residents as we launch <b>Our Punggol
+                                        Story</b>.
+                                </p>
+                                <div class="event-meta">
+                                    <span class="badge">Punggol Digital District</span>
+                                    <span class="badge">Public</span>
+                                    <span class="badge">Free</span>
+                                </div>
+                                <!-- <div class="mt-2"><a class="btn alt" href="#involved">Get updates</a></div> -->
+                            </div>
+                        </article>
+
+                        <!-- Slide 2 -->
+                        <article class="event-card" data-when="2025-12-01" aria-labelledby="evt-hidden-title">
+                            <div class="event-date" aria-hidden="true">
+                                <span class="mon">DEC</span><span class="day">01</span><span class="year">2025</span>
+                            </div>
+                            <div>
+                                <h3 id="evt-hidden-title" style="margin:0 0 6px">HiddenSG WhatsApp Game</h3>
+                                <p class="hint" style="margin:0 0 10px">
+                                    Join our interactive WhatsApp treasure hunt — uncover mural secrets and hidden
+                                    stories across Punggol.
+                                </p>
+                                <div class="event-meta">
+                                    <span class="badge">Online</span>
+                                    <span class="badge">Interactive</span>
+                                    <span class="badge">Free</span>
+                                </div>
+                                <div class="mt-2"><a class="btn alt" href="#involved">Register to play</a></div>
+                            </div>
+                        </article>
+                    </div>
+
+                </div>
+                <div class="events-dots" id="eventsDots" aria-hidden="true"></div>
+            </div>
         </div>
     </section>
+
 
     <!-- ==============================
        ABOUT (magenta) — WAVE AT TOP (magenta)
@@ -1778,7 +1876,7 @@
                 <p class="mt-2"><a href="https://www.jtc.gov.sg/" target="_blank" rel="noopener">Read about PDD as a
                         vibrant, well-connected, sustainable hub →</a></p>
             </div> -->
-
+            <!-- 
             <div class="about-card">
                 <h2>About the Project</h2>
 
@@ -1795,7 +1893,7 @@
                 <div class="logos-row">
                     <img src="./assets/logos/tyc.png" alt="TYC" loading="lazy" />
                 </div>
-            </div>
+            </div> -->
 
 
             <section class="bts" aria-label="Behind the Scenes">
@@ -1864,18 +1962,7 @@
                     <iframe class="map" loading="lazy" allowfullscreen
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15954.509!2d103.899!3d1.404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sPunggol%20Digital%20District!5e0!3m2!1sen!2ssg!4v00000000000"></iframe>
                 </div>
-                <div class="card">
-                    <div class="body">
-                        <p><b>Getting there</b></p>
-                        <ul>
-                            <li><b>MRT:</b> Punggol (NE17) → Bus to PDD (check latest routes).</li>
-                            <li><b>Bus:</b> Nearest stops around PDD campus (varies by time).</li>
-                            <li><b>Barrier-free:</b> Use lifts and ramps via main concourse.</li>
-                        </ul>
-                        <p class="hint">On site already? Scan the QR on the mural again anytime for the latest updates.
-                        </p>
-                    </div>
-                </div>
+
             </div>
         </div>
     </section>
@@ -1883,16 +1970,16 @@
     <!-- ==============================
        GET INVOLVED (red) — WAVE AT TOP (red)
   =============================== -->
-    <section class="section theme-red" id="involved">
+    <!-- <section class="section theme-red" id="involved">
         <div class="wave wave--red" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
                 <path
                     d="M0,192L48,181.3C96,171,192,149,288,160C384,171,480,213,576,213.3C672,213,768,171,864,176C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L0,320Z">
                 </path>
             </svg>
-        </div>
+        </div> -->
 
-        <!-- <div class="wrap">
+    <!-- <div class="wrap">
             <h2>Partnerships and Collaboration</h2>
             <p class="lead">Join workshops, contribute future avatars, volunteer, or partner with us.</p>
             <div class="grid-1">
@@ -1935,15 +2022,15 @@
             </div>
         </div> -->
 
-        <div class="wrap">
+    <!-- <div class="wrap">
             <h2>Partnerships and Collaboration</h2>
             <p class="lead">
                 For partnership or collaboration opportunities, please write to
                 <a href="mailto:northeast_cdc@pa.gov.sg">northeast_cdc@pa.gov.sg</a>.
             </p>
-        </div>
+        </div> -->
 
-    </section>
+    <!-- </section> -->
 
     <!-- Consent Lightbox -->
     <div class="modal-backdrop" id="consentBackdrop" hidden></div>
@@ -1986,6 +2073,7 @@
        FOOTER (white) — WAVE AT TOP (white)
   =============================== -->
     <footer class="footer">
+        <span id="year" style="display: none;"></span>
         <div class="wave wave--white" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
                 <path
@@ -1994,31 +2082,58 @@
             </svg>
         </div>
 
-        <div class="wrap">
-            <div class="grid-3">
-                <div>
-                    <b>Our Punggol Story</b>
-                    <p class="mt-1">Meet the artists, make your own avatar, and bring the mural to life with AR.</p>
-                </div>
-                <div>
-                    <b>Links</b>
-                    <ul class="footer-links">
-                        <li><a href="https://www.jtc.gov.sg/" target="_blank" rel="noopener">PDD (JTC)</a></li>
-                        <li><a href="https://shapinghearts.sg" target="_blank" rel="noopener">Shaping Hearts</a></li>
-                        <li><a href="https://www.singaporetech.edu.sg" target="_blank" rel="noopener">SIT</a></li>
-                        <li><a href="https://www.singaporetech.edu.sg/DesignFactory" target="_blank"
-                                rel="noopener">DF@SIT</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <b>Share</b>
-                    <p class="mt-1">Share this mural</p>
-                    <div class="mt-1"><a class="btn ghost" id="shareBtn" href="#">Share link</a></div>
-                </div>
+        <div class="footer-grid">
+            <div>
+                <!-- <b>Our Punggol Story</b>
+                <p class="mt-1">Meet the artists, make your own avatar, and bring the mural to life with AR.</p> -->
             </div>
-            <p class="mt-3" style="font-size:.9rem;">© <span id="year"></span> Our Punggol Story. Built with love in
-                Punggol.</p>
+
+            <div>
+                <b>Partners</b>
+                <ul class="footer-links">
+                    <li>
+                        <a href="https://www.jtc.gov.sg/" target="_blank" rel="noopener">
+                            <img src="assets/logos/jtc.png" alt="JTC logo" loading="lazy">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://shapinghearts.sg" target="_blank" rel="noopener">
+                            <img src="assets/logos/necdc.png" alt="Shaping Hearts logo" loading="lazy">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://shapinghearts.sg" target="_blank" rel="noopener">
+                            <img src="assets/logos/shapinghearts.png" alt="Shaping Hearts logo" loading="lazy">
+                        </a>
+                    </li>
+                    <!-- <li>
+                        <a href="https://www.singaporetech.edu.sg" target="_blank" rel="noopener">
+                            <img src="assets/logos/sitdflogo.png" alt="SIT logo" loading="lazy">
+                        </a>
+                    </li> -->
+                    <li>
+                        <a href="https://www.singaporetech.edu.sg/DesignFactory" target="_blank" rel="noopener">
+                            <img src="assets/logos/sitdflogo.png" alt="DF@SIT logo" loading="lazy">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <b>Partnerships & Collaboration</b>
+                <p class="mt-1">
+                    For partnership or collaboration opportunities, please write to
+                    <a href="mailto:northeast_cdc@pa.gov.sg">northeast_cdc@pa.gov.sg</a>.
+                </p>
+            </div>
+
+            <div>
+                <b>Share</b>
+                <p class="mt-1">Share this mural</p>
+                <div class="mt-1"><a class="btn ghost" id="shareBtn" href="#">Share link</a></div>
+            </div>
         </div>
+
     </footer>
 
     <button class="fab" id="toTop" aria-label="Back to top">↑</button>
