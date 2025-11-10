@@ -1197,29 +1197,27 @@
             place-items: center;
             border-radius: var(--radius-sm);
             border: 2px solid var(--brand);
-            background: var(--brand);
+            background: linear-gradient(135deg, #0b3d77, var(--brand));
             color: #fff;
-            font-weight: 800;
             text-align: center;
-            padding: 14px;
-            line-height: 1.05;
+            padding: 16px;
+            line-height: 1.1;
             box-shadow: var(--shadow);
         }
 
-        .event-date .day {
-            font-size: clamp(28px, 5vw, 40px);
-        }
-
-        .event-date .mon,
-        .event-date .year {
-            font-size: .95rem;
-            letter-spacing: .5px;
-        }
-
         .event-date .range {
-            font-size: clamp(16px, 3.5vw, 22px);
-            font-weight: 700;
+            display: block;
+            font-weight: 800;
             text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        .event-date .range span {
+            display: block;
+        }
+
+        .event-date .range--primary {
+            font-size: clamp(13px, 2.2vw, 16px);
         }
 
         .event-meta {
@@ -1955,7 +1953,8 @@
                             <img class="event-banner" src="assets/launchbanner.png"
                                 alt="Crowd celebrating the launch of Our Punggol Story mural" loading="lazy" />
                             <div class="event-date" aria-hidden="true">
-                                <span class="range">nov 16 2025 - nov 24 2025</span>
+                                <span class="range range--primary"><span>Nov 16</span><span>- Nov 24</span></span>
+                                <span class="range range--year">2025</span>
                             </div>
 
                             <div>
@@ -1975,8 +1974,11 @@
 
                         <!-- Slide 2 -->
                         <article class="event-card" data-when="2025-12-01" aria-labelledby="evt-hidden-title">
+                            <img class="event-banner" src="assets/hiddensg-banner.png"
+                                alt="Crowd celebrating the launch of Our Punggol Story mural" loading="lazy" />
                             <div class="event-date" aria-hidden="true">
-                                <span class="range">nov 16 2025 - nov 24 2025</span>
+                                <span class="range range--primary"><span>Nov 16</span><span>- Nov 24</span></span>
+                                <span class="range range--year">2025</span>
                             </div>
                             <div>
                                 <h3 id="evt-hidden-title" style="margin:0 0 6px">HiddenSG x Shaping Hearts Trail</h3>
